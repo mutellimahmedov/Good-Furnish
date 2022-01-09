@@ -44,18 +44,18 @@ if(isset($_GET['cancelled'])) {
 
 <?php 
 
-include "config.php";
+// include "config.php";
 
-//SEARCH BAR ACTION
-$sql = " SELECT * FROM orders ";
+// //SEARCH BAR ACTION
+// $sql = " SELECT * FROM orders ";
 
-if(isset($_POST['search'])) {
+// if(isset($_POST['search'])) {
 
-  $search_term = mysql_real_escape_string($_POST['search_box']);
+//   $search_term = mysql_real_escape_string($_POST['search_box']);
 
-  $sql .= "WHERE order_id = '{$search_term}";
+//   $sql .= "WHERE order_id = '{$search_term}";
 
-}
+// }
 
 
 ?>
@@ -76,10 +76,10 @@ if(isset($_POST['search'])) {
         <a href="./order-add.php" class="btn btn-primary">New Add</a>
       </div>
 
-      <form name="_form" method="POST" action="orders.php">  
+      <!-- <form name="_form" method="POST" action="orders.php">  
         Search: <input type="text" name="search_box" value=""/>
         <input class="search btn-secondary" type="submit" name="search" value="Search the Table">
-      </form>
+      </form> -->
 
       <table class="table">
         <thead>
