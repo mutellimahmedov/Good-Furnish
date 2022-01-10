@@ -10,7 +10,7 @@ if (isset($_POST['category_add_btn'])) {
   $customer_id = $_POST['customer_id'];
   $quantity    = $_POST['quantity'];
 
-  $insert = $db->prepare('INSERT INTO orders (product_id,customer_id,quantity	,order_time, cancelled) 
+  $insert = $db->prepare('INSERT INTO orders (product_id, customer_id, quantity, order_time, cancelled) 
   VALUES (?,?,?,?,?)')
     ->execute(array(
       $product_id,
@@ -22,12 +22,11 @@ if (isset($_POST['category_add_btn'])) {
 
   $lastId = $db->lastInsertId();
 
-  $sales = $db->prepare('INSERT INTO sales SET order_id =?, Sale_time =?, canceled = ?')
+  $sales = $db->prepare('INSERT INTO sales SET order_id =?, Sale_time =?')
   ->execute(
     [
       $lastId,
-      date('Y-m-d'),
-      0
+      date('Y-m-d')
     ]
 );
 
@@ -49,7 +48,7 @@ if (isset($_POST['category_add_btn'])) {
 <div class="container mt-5">
   <div class="card">
     <div class="card-header">
-      Add Customer
+      Add Order
     </div>
     <?php
     if (!empty($message)) {
@@ -65,7 +64,7 @@ if (isset($_POST['category_add_btn'])) {
             <?php
             foreach ($products as $key => $product) {
             ?>
-              <option value="<?= $product['id'] ?>"><?= $product['name'] ?></option>
+              <option value="<?= $product['product_id'] ?>"><?= $product['name'] ?></option>
             <?php
             }
             ?>
@@ -79,7 +78,7 @@ if (isset($_POST['category_add_btn'])) {
             <?php
             foreach ($customers as $key => $customer) {
             ?>
-              <option value="<?= $customer['id'] ?>"><?= $customer['first_name'] ?></option>
+              <option value="<?= $customer['customer_id'] ?>"><?= $customer['first_name'] ?></option>
             <?php
             }
             ?>

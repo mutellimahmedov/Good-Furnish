@@ -19,13 +19,12 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
       <th scope="col">Min. Quantity</th>
       <th scope="col">Price</th>
-      <th scope="col">Discount Rate</th>
     </tr>
   </thead>
   <tbody>
@@ -33,20 +32,19 @@
       $date = date('Y-m-d');
       $daily = $db->query('SELECT * FROM orders WHERE cancelled = 0 AND  order_time = "'.$date.'"')->fetchAll();
       foreach($daily as $key => $value){
-        $product = $db->query('SELECT * FROM products WHERE id = '.$value['product_id'])->fetch(); ?>
+        $product = $db->query('SELECT * FROM products WHERE product_id = '.$value['product_id'])->fetch(); ?>
         <tr>
-          <td scope="row"><?=++$key?></td>
+          <td scope="row"><?=$product['product_id']?></td>
           <td><?=$product['name']?></td>
           <td>
             <?php
-              $category = $db->query('SELECT * FROM categories WHERE id = '.$product['categori_id'])->fetch();
+              $category = $db->query('SELECT * FROM categories WHERE category_id = '.$product['category_id'])->fetch();
               echo $category['name'];
             ?>
           </td>
           <td><?=$product['quantity']?></td>
           <td><?=$product['minimum_quantity']?></td>
           <td><?=$product['price']?></td>
-          <td><?=$product['discount_rate']?></td>
         </tr>
       <?php } ?>
   </tbody>

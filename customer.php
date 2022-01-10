@@ -35,7 +35,7 @@ if(isset($_GET['id'])) {
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Firstname</th>
             <th scope="col">Lastname</th>
             <th scope="col">Telephone</th>
@@ -49,14 +49,14 @@ if(isset($_GET['id'])) {
           foreach ($customers as $key => $customer) {
           ?>
             <tr>
-              <th scope="row"><?=++$key?></th>
+              <th scope="row"><?=$customer['customer_id']?></th>
               <td><?=$customer['first_name']?></td>
-              <td><?=$customer['lastname']?></td>
+              <td><?=$customer['last_name']?></td>
               <td><?=$customer['telephone']?></td>
               <td><?=$customer['address']?></td>
               <td>
-                <a href="./customer.php?id=<?=$customer['id']?>" class="btn btn-danger">Delete</a>
-                <a href="./customer-update.php?id=<?=$customer['id']?>" class="btn btn-primary">Update</a>
+                <a href="./customer.php?id=<?=$customer['customer_id']?>" class="btn btn-danger">Delete</a>
+                <a href="./customer-update.php?id=<?=$customer['customer_id']?>" class="btn btn-primary">Update</a>
               </td>
 
             </tr>

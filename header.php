@@ -92,7 +92,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="./sales-amount.php">Sales Amount</a></li>
             <li><a class="dropdown-item" href="./product-sales.php">Sales Product</a></li>
-            <li><a class="dropdown-item" href="./out-of-stock-products.php">Out of Stock of Products</a></li>
           </ul>
         </li>
 
