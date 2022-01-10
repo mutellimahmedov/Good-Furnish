@@ -34,7 +34,7 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Actions</th>
     </tr>
@@ -44,11 +44,11 @@
       $categories = $db->query('SELECT * FROM categories')->fetchAll();
       foreach($categories as $key => $category){ ?>
         <tr>
-          <td scope="row"><?=++$key?></td>
+          <td scope="row"><?=$category['category_id']?></td>
           <td><?=$category['name']?></td>
           <td>
-            <a href="./category.php?id=<?=$category['id']?>" class="btn btn-danger">Delete</a>
-            <a href="./category-update.php?id=<?=$category['id']?>" class="btn btn-primary">Update</a>
+            <a href="./category.php?id=<?=$category['category_id']?>" class="btn btn-danger">Delete</a>
+            <a href="./category-update.php?id=<?=$category['category_id']?>" class="btn btn-primary">Update</a>
           </td>
         </tr>
     <?php  }

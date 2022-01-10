@@ -40,7 +40,6 @@
       <th scope="col">Quantity</th>
       <th scope="col">Min. Quantity</th>
       <th scope="col">Price</th>
-      <th scope="col">Discount Rate</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -49,21 +48,20 @@
       $products = $db->query('SELECT * FROM products')->fetchAll();
       foreach($products as $key => $product){ ?>
         <tr>
-          <td scope="row"><?=++$key?></td>
+          <td scope="row"><?=$product['product_id']?></td>
           <td><?=$product['name']?></td>
           <td>
             <?php
-              $category = $db->query('SELECT * FROM categories WHERE id = '.$product['categori_id'])->fetch();
+              $category = $db->query('SELECT * FROM categories WHERE category_id = '.$product['category_id'])->fetch();
               echo $category['name'];
             ?>
           </td>
           <td><?=$product['quantity']?></td>
           <td><?=$product['minimum_quantity']?></td>
           <td><?=$product['price']?></td>
-          <td><?=$product['discount_rate']?></td>
           <td>
-            <a href="./product.php?id=<?=$product['id']?>" class="btn btn-danger">Delete</a>
-            <a href="./product-update.php?id=<?=$product['id']?>" class="btn btn-primary">Update</a>
+            <a href="./product.php?id=<?=$product['product_id']?>" class="btn btn-danger">Delete</a>
+            <a href="./product-update.php?id=<?=$product['product_id']?>" class="btn btn-primary">Update</a>
           </td>
         </tr>
     <?php  }
