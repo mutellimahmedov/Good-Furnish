@@ -90,7 +90,7 @@ if(isset($_GET['cancelled'])) {
             <th scope="col">Surname</th>
             <th scope="col">Quantity</th>
             <th scope="col">Order Date</th>
-            <th scope="col">Status of Order</th>
+            <th scope="col">Cancelled</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -106,7 +106,7 @@ if(isset($_GET['cancelled'])) {
               <td><?=$order['user_surname']?></td>
               <td><?=$order['quantity']?></td>
               <td><?=$order['order_time']?></td>
-              <td><?=$order['cancelled'] == 0 ?'': 'cancelled'; ?></td>
+              <td><?=$order['cancelled'] == 0 ?'Yes': 'No'; ?></td>
               <td>
                 <a href="./orders.php?id=<?=$order['_id']?>" class="btn btn-danger">Delete</a>
                 <a href="./order-update.php?id=<?=$order['_id']?>" class="btn btn-primary">Update</a>

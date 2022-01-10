@@ -29,7 +29,7 @@ if (isset($_POST['category_add_btn'])) {
   $customer_id = $_POST['customer_id'];
   $quantity    = $_POST['quantity'];
 
-  $insert = $db->prepare('UPDATE orders SET product_id = ? ,customer_id = ? ,quantity = ? ,order_time = ?, cancelled = ? WHERE order_id = '.$_GET['id'].' ') 
+  $insert = $db->prepare('UPDATE orders SET product_id = ? ,customer_id = ?, quantity = ? ,order_time = ?, cancelled = ? WHERE order_id = '.$_GET['id'].' ') 
     ->execute(array(
       $product_id,
       $customer_id,
@@ -57,7 +57,7 @@ header('location: '.$_SERVER['HTTP_REFERER'].' ');
 <div class="container mt-5">
   <div class="card">
     <div class="card-header">
-      Add Customer
+      Update Order
     </div>
     <?php
     if (!empty($message)) {
