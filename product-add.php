@@ -1,7 +1,9 @@
 <?php require_once './header.php' ;
   $message = "";
+
   if(isset($_POST['product_add_btn'])){
-      $insert = $db->prepare('INSERT INTO products (categori_id ,name, quantity, minimum_quantity, price, discount_rate) VALUES (?,?,?,?,?,?)')->execute(array($_POST['category'],$_POST['name'],$_POST['quantity'],$_POST['min_quantity'],$_POST['price'],$_POST['discount_rate']));
+      $insert = $db->prepare('INSERT INTO products (product_id, category_id, name, quantity, minimum_quantity, price) VALUES (?,?,?,?,?,?)')
+      ->execute(array($_POST['product_id'],$_POST['category_id'],$_POST['name'],$_POST['quantity'],$_POST['minimum_quantity'],$_POST['price']));
 
       if($insert){
         $message = '<div class="alert alert-success" role="alert">
@@ -29,28 +31,33 @@
       ?>
 
       <form action="" method="POST">
+      <div class="form-group">
+          <label for="price">ID</label>
+          <input type="value" class="form-control" id="id" name="product_id" aria-describedby="id" placeholder="Enter ID">
+        </div>
         <div class="form-group">
           <label for="category">Category</label>
-          <select class="custom-select form-control" id="category" name="category">
+          <select class="custom-select form-control" id="category" name="category_id">
             <option selected>Select Category</option>
             <?php
               $categories = $db->query('SELECT * FROM categories')->fetchAll();
               foreach($categories as $key => $category){ ?>
-              <option value="<?=$category['id']?>"><?=$category['name']?></option>
+              <option value="<?=$category['category_id']?>"><?=$category['name']?></option>
            <?php } ?>
           </select>
         </div>
+        
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder="Enter name">
         </div>
         <div class="form-group">
           <label for="quantity">Quantity</label>
-          <input type="number" class="form-control" id="quantity" name="quantity" aria-describedby="quantity" placeholder="Enter quantity">
+          <input type="value" class="form-control" id="quantity" name="quantity" aria-describedby="quantity" placeholder="Enter quantity">
         </div>
         <div class="form-group">
           <label for="min_quantity">Minumum Quantity</label>
-          <input type="number" class="form-control" id="min_quantity" name="min_quantity" aria-describedby="min_quantity" placeholder="Enter minumum quantity">
+          <input type="value" class="form-control" id="min_quantity" name="minimum_quantity" aria-describedby="min_quantity" placeholder="Enter minumum quantity">
         </div>
         <div class="form-group">
           <label for="price">Price</label>

@@ -1,7 +1,8 @@
 <?php require_once './header.php' ;
   $message = "";
+
   if(isset($_POST['category_update_btn'])){
-      $insert = $db->prepare('UPDATE categories SET name = ? WHERE id =?')->execute(array($_POST['category_name'] , $_GET['id']));
+      $insert = $db->prepare('UPDATE categories SET name = ? WHERE category_id =?')->execute(array($_POST['category_name'] , $_GET['id']));
 
       if($insert){
         $message = '<div class="alert alert-success" role="alert">
@@ -14,7 +15,7 @@
       }
   }
 
-  $data = $db->query('SELECT * FROM categories WHERE id ='.$_GET['id'])->fetch();
+  $data = $db->query('SELECT * FROM categories WHERE category_id ='.$_GET['id'])->fetch();
 
 ?>
 

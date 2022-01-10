@@ -2,7 +2,7 @@
 <?php require_once './header.php';
 
   if(isset($_GET['id'])){
-    $delete = $db->prepare('DELETE FROM categories WHERE id = ?')->execute(array($_GET['id']));
+    $delete = $db->prepare('DELETE FROM categories WHERE category_id = ?')->execute(array($_GET['id']));
     if($delete){
       $message = '<div class="alert alert-success" role="alert">
       Successfully deleted
