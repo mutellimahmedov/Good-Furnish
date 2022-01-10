@@ -1,10 +1,8 @@
 <?php require_once './header.php' ;
   $message = "";
   if(isset($_POST['product_update_btn'])){
-      $update = $db->prepare('UPDATE products SET product_id =?, category_id=? ,name=?, quantity=?, minimum_quantity=?, price=?, discount_rate=? 
-      WHERE id = ?')
-      ->execute(array($_POST['product_id'],$_POST['category_id'],$_POST['name'],$_POST['quantity'],$_POST['minimum_quantity'],$_POST['price'],
-      $_POST['discount_rate'],$_GET['id']));
+      $update = $db->prepare('UPDATE products SET product_id =?, category_id=? ,name=?, quantity=?, minimum_quantity=?, price=? WHERE product_id = ?')
+      ->execute(array($_POST['product_id'],$_POST['category_id'],$_POST['name'],$_POST['quantity'],$_POST['minimum_quantity'],$_POST['price'],$_GET['id']));
 
       if($update){
         $message = '<div class="alert alert-success" role="alert">
@@ -65,10 +63,10 @@
           <label for="price">Price</label>
           <input type="text" class="form-control" id="price" name="price" aria-describedby="price" value="<?=$data['price']?>">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="discount_rate">Discount Rate</label>
           <input type="value" class="form-control" id="discount_rate" name="discount_rate" aria-describedby="discount_rate" value="<?=$data['discount_rate']?>">
-        </div>
+        </div> -->
         <div style="text-align: end;" class="mt-2">
           <button name="product_update_btn" class="btn btn-primary">Update</button>
         </div>

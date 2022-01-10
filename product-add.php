@@ -63,10 +63,10 @@
           <label for="price">Price</label>
           <input type="text" class="form-control" id="price" name="price" aria-describedby="price" placeholder="Enter price">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="discount_rate">Discount Rate</label>
           <input type="number" class="form-control" id="discount_rate" name="discount_rate" aria-describedby="discount_rate" placeholder="Enter discount rate">
-        </div>
+        </div> -->
         <div style="text-align: end;" class="mt-2">
           <button name="product_add_btn" class="btn btn-primary">New Add</button>
         </div>
